@@ -23,6 +23,7 @@ function handleUpdate(val = null) {
 		ciphertext += transformedChar;
 	};
 	console.log(plaintext + " -> " + ciphertext); 
+	document.getElementById("text_output").value = ciphertext;
 }
 
 let mode = 'mode_enc';
