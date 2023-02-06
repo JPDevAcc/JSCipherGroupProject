@@ -1,0 +1,9 @@
+.encdec {
+	display: flex ;
+	flex-direction:column;
+	gap: 1em;
+}
+
+.textarea {
+	resize:vertical;
+}
