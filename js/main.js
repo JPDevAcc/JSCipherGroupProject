@@ -18,11 +18,15 @@ function handleUpdate(val = null) {
 
 	for (let i = 0; i < plaintext.length; i++) {
 		let charCode = plaintext.charCodeAt(i);
-		const transformedCharCode = caesarCipher.transformCharCode(charCode, (mode === 'mode_enc') ? 1 : -1) ;
-		const transformedChar = String.fromCharCode(transformedCharCode);
-		ciphertext += transformedChar;
+		// Only process characters that are handled correctly by the cipher
+		if (charCode >= caesarCipher.processCharCodeMin && charCode <= caesarCipher.processCharCodeMax) {
+			let transformedCharCode = caesarCipher.transformCharCode(charCode, (mode === 'mode_enc') ? 1 : -1) ; // Transform
+			const transformedChar = String.fromCharCode(transformedCharCode); // Convert back to character
+			ciphertext += transformedChar ; // Add to buffer
+		} else {
+			ciphertext += plaintext.charAt(i); // Add to buffer (pass through)
+		}
 	};
-	console.log(plaintext + " -> " + ciphertext); 
 	document.getElementById("text_output").value = ciphertext;
 }
 
