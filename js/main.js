@@ -21,6 +21,7 @@ function handleUpdate(val = null) {
 		// Only process characters that are handled correctly by the cipher
 		if (charCode >= caesarCipher.processCharCodeMin && charCode <= caesarCipher.processCharCodeMax) {
 			let transformedCharCode = caesarCipher.transformCharCode(charCode, (mode === 'mode_enc') ? 1 : -1) ; // Transform
+			transformedCharCode |= (val.charCodeAt(i) & 32); // Restore capitalisation
 			const transformedChar = String.fromCharCode(transformedCharCode); // Convert back to character
 			ciphertext += transformedChar ; // Add to buffer
 		} else {
