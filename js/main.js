@@ -1,10 +1,9 @@
 // Type: Module (with side-effects)
 import CipherCaesar from './ciphers/caesar.js' ;
 
-// accepts user input for key
-function getKey(val = 1) {
-	if (val === 1) val = keyEl.value;
-	let key = val
+// Accepts user input for key
+function getKey(key) {
+	key ||= 0 ; // (default to zero on invalid input)
 	caesarCipher = new CipherCaesar(key);
 	handleUpdate();
 }
@@ -20,8 +19,10 @@ const textOutputEl = document.querySelector('#text_output') ;
 textInputEl.addEventListener('input', (e) => handleUpdate(e.target.value)) ;
 document.querySelector('#encode_decode_selector').addEventListener('change', (e) => selectEncodeOrDecodeMode(e.target.id)) ;
 
+// Handle update to plaintext or shift setting
 function handleUpdate(val = null) {
 	if (val === null) val = textInputEl.value;
+	// Simplify the A-Z guard check below by converting to uppercase (although in-fact the cipher would work correctly with either case)
 	let plaintext = val.toUpperCase();
 	let ciphertext = "";
 
@@ -37,12 +38,11 @@ function handleUpdate(val = null) {
 			ciphertext += plaintext.charAt(i); // Add to buffer (pass through)
 		}
 	};
-	document.getElementById("text_output").value = ciphertext;
+	textOutputEl.value = ciphertext;
 }
 
-let mode = 'mode_enc';
+let mode = 'mode_enc' ; // Initial mode
 function selectEncodeOrDecodeMode(newMode) {
 	mode = newMode ;
-	console.log("new mode:", mode) ;
 	handleUpdate() ;
 }
