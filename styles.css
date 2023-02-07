@@ -5,20 +5,17 @@
 	
 }
 .encdec textarea {
-    font-family: 'Montserrat', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 }
-
 
 .textarea {
 	resize:vertical;
 }
 
 .bg {
-
 	background-color: darkgrey;
 }
 
 .decode-btn {
 	margin-left: 20px;
 }
-
