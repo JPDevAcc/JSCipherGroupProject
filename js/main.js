@@ -22,7 +22,7 @@ document.querySelector('#encode_decode_selector').addEventListener('change', (e)
 // Handle update to plaintext or shift setting
 function handleUpdate(val = null) {
 	if (val === null) val = textInputEl.value;
-	// Simplify the A-Z guard check below by converting to uppercase (although in-fact the cipher would work correctly with either case)
+	// Convert to upper-case (required for A-Z check below and for transformCharCode() to work correctly)
 	let plaintext = val.toUpperCase();
 	let ciphertext = "";
 
