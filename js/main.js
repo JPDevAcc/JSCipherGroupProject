@@ -2,8 +2,19 @@
 import CipherCaesar from './ciphers/caesar.js' ;
 
 //NEXT: add user input to get key and pass it through the function
-let key = 3;
-const caesarCipher = new CipherCaesar(key) ;
+
+// accepts user input for key
+function getKey(val = 1) {
+	if (val === 1) val = keyEl.value;
+	let key = val
+	caesarCipher = new CipherCaesar(key);
+	handleUpdate();
+}
+
+const KeyEl = document.querySelector('#user_key') ;
+KeyEl.addEventListener('click', (e) => getKey(e.target.value)) ;
+
+let caesarCipher = new CipherCaesar(document.getElementById("user_key").value);
 
 const textInputEl = document.querySelector('#text_input') ;
 const textOutputEl = document.querySelector('#text_output') ;
