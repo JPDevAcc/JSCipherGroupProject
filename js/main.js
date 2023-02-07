@@ -1,8 +1,6 @@
 // Type: Module (with side-effects)
 import CipherCaesar from './ciphers/caesar.js' ;
 
-//NEXT: add user input to get key and pass it through the function
-
 // accepts user input for key
 function getKey(val = 1) {
 	if (val === 1) val = keyEl.value;
