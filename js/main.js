@@ -10,7 +10,6 @@ function getKey(val = 1) {
 }
 
 const KeyEl = document.querySelector('#user_key') ;
-KeyEl.addEventListener('click', (e) => getKey(e.target.value)) ;
 KeyEl.addEventListener('input', (e) => getKey(e.target.value)) ;
 
 let caesarCipher = new CipherCaesar(document.getElementById("user_key").value);
